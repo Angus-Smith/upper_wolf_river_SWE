@@ -28,6 +28,5 @@ julyAvg <- sh %>%
   group_by(YDAY) %>%
   summarise(mean(Snow.Water.Equivalent, na.rm = T))
 
-ggplot(sh, aes(sh$Snow.Water.Equivalent, factor(mday(sh$Date)), colour = year(sh$Date))) +
-  geom_line() +
+ggplot(sh, aes(x = mday(sh$Date), y = sh$Snow.Water.Equivalent, colour = year(sh$Date))) +
   geom_point()
