@@ -1,0 +1,8 @@
+CODES:	
+*  —up to 3 hourly measurements missing	
+U  —more than 3 hourly measurements missing	
+E  —estimated	
+R  —original data revised	
+L  —8 AM measurement not available	
+A  —8 AM measurement available after L code	
+M  —missing	
