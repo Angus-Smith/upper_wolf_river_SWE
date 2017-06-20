@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "setwd(\"~/GitHub/upper_wolf_river_SWE\")\n\n# imports\nrequire(lubridate)\nrequire(magrittr)\nrequire(dplyr)\nrequire(ggplot2)\n\n# read in data\nsh <- read.csv(\"~/GitHub/upper_wolf_river_SWE/data/3B17P.csv\", T, \",\")\nsr <- read.csv(\"~/GitHub/upper_wolf_river_SWE/data/3B17P_recent.csv\", T, \",\")\n\nshbak <- sh\nsrbak <- sr\n\n# start here\nsh <- shbak\nsr <- srbak\n\n# parse date\nsh$Date <- ymd(sh$Date)\n\n\n# july as month of interest\nsh <- sh[month(sh$Date) == 7,]\nsh$YDAY <- yday(sh$Date)\njulyAvg <- sh %>%\n  group_by(YDAY) %>%\n  summarise(mean(Snow.Water.Equivalent, na.rm = T))\n\nggplot(sh, aes(sh$Snow.Water.Equivalent, factor(mday(sh$Date)), colour = year(sh$Date))) +\n  geom_line() +\n  geom_point()\n",
+    "created" : 1497930421589.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1990640795",
+    "id" : "CDD91CE0",
+    "lastKnownWriteTime" : 1497939663,
+    "last_content_update" : 1497939663563,
+    "path" : "~/GitHub/upper_wolf_river_SWE/explore1.R",
+    "project_path" : "explore1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
