@@ -28,5 +28,20 @@ julyAvg <- sh %>%
   group_by(YDAY) %>%
   summarise(mean(Snow.Water.Equivalent, na.rm = T))
 
-ggplot(sh, aes(x = mday(sh$Date), y = sh$Snow.Water.Equivalent, colour = year(sh$Date))) +
+ggplot(sh, aes(x = yday(sh$Date), y = sh$Snow.Water.Equivalent)) +
   geom_point()
+ggplot(sh, aes(x = yday(sh$Date))) +
+  geom_point(aes(y = sh$Temp..Min.), colour = "blue") +
+  geom_point(aes(y = sh$Temp..Max.), colour = "red") +
+  geom_smooth(aes(y = sh$Temp..Min.), colour = "blue") +
+  geom_smooth(aes(y = sh$Temp..Max.), colour = "red") +
+  geom_vline(xintercept = 205) +
+  geom_vline(xintercept = 210)
+
+ggplot(sh, aes(x = yday(sh$Date))) +
+  geom_smooth(aes(y = sh$Temp..Min., colour = "blue")) +
+  geom_smooth(aes(y = sh$Temp..Max., colour = "red"), level = 0.999)
+  geom_pointrange(aes(ymin = sh$Temp..Min., ymax = sh$Temp..Max.))
+
+  yday(dmy("24/07/2017"))
+  
